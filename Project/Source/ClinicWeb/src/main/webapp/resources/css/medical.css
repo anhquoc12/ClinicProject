@@ -1,0 +1,33 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Aug 10, 2023, 2:39:28 PM
+    Author     : Admin
+*/
+
+.form-medical {
+    width: 45%;
+    margin: auto;
+}
+
+.ml-12 {
+    margin-left: 12px;
+}
+
+.number {
+    width: 16%;
+}
+
+.right {
+    float: right;
+}
+
+.danger {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+  margin: 32px 0 150px 0;
+  padding: 4px 12px;
+  font-size: 2rem;
+}

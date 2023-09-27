@@ -1,0 +1,62 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Aug 15, 2023, 3:24:12 PM
+    Author     : Admin
+*/
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    background-color: #0080ff;
+    padding: 15px;
+    position: relative;
+    font-family: "Roboto Mono", monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.item {
+    height: 36px;
+    width: 32% !important;
+    margin: 12px;
+}
+
+.item-btn {
+    width: 16% !important;
+}
+
+.search__form {
+    width: 40% !important;
+    margin: 24px 12px 40px 60px !important;
+    border: 1px solid gainsboro !important;
+}
+
+.badge-search {
+    display: inline-block;
+    position: relative;
+    top: -30px !important;
+}
+
+#myTable {
+    margin-top: 36px !important;
+    margin-bottom: 60px !important;
+}

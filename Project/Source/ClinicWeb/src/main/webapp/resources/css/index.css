@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+.signin
+{
+    min-width: 120px;
+    margin-right: 20px;
+}
+
+.carosel-img
+{
+    height: 500px;
+}
+
+.logo
+{
+    width: 40px;
+    height: 40px;
+}
+
+.introduce
+{
+    margin: 40px auto;
+    font-family: "Inter", Sans-serif;
+}
+
+footer
+{
+    font-family: Poppins, sans-serif;
+}
+
+.content  .content-row
+{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.department_section {
+  position: relative;
+}
+
+.department_section .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 45px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.department_section .box .img-box {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 15px;
+  background-color: #62d2a2;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.department_section .box .img-box img {
+  max-width: 55px;
+  max-height: 55px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.department_section .box .detail-box h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.department_section .box .detail-box a {
+  color: #1fab89;
+  font-weight: 600;
+}
+
+.department_section .box .detail-box a:hover {
+  color: #62d2a2;
+}
+
+.department_section .btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 45px;
+}
+
+.department_section .btn-box a {
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: #62d2a2;
+  color: #ffffff;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid #62d2a2;
+}
+
+.department_section .btn-box a:hover {
+  background-color: transparent;
+  color: #62d2a2;
+}
+
+.layout_padding {
+  padding: 90px 0;
+}
+
+.layout_padding2 {
+  padding: 75px 0;
+}
+
+.layout_padding2-top {
+  padding-top: 75px;
+}
+
+.layout_padding2-bottom {
+  padding-bottom: 75px;
+}
+
+.layout_padding-top {
+  padding-top: 90px;
+}
+
+.layout_padding-bottom {
+  padding-bottom: 90px;
+}
+
+.layout_margin-top {
+  margin-top: 90px;
+}
+
+.layout_margin-bottom {
+  margin-bottom: 90px;
+}
+
+.heading_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.heading_container h2 {
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.heading_container p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.heading_container.heading_center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: initial;
+}
+
+.btn,
+.btn:focus {
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.about_section .row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_section .img-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about_section .img-box img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.about_section .detail-box h3 {
+  font-weight: bold;
+}
+
+.about_section .detail-box p {
+  margin-top: 15px;
+}
+
+.about_section .detail-box a {
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: #62d2a2;
+  color: #ffffff;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid #62d2a2;
+  margin-top: 15px;
+}
+
+.about_section .detail-box a:hover {
+  background-color: transparent;
+  color: #62d2a2;
+}
+
+.doctor_section {
+  background: #178066;
+}
+
+.doctor_section .heading_container {
+  color: #ffffff;
+}
+
+.doctor_section .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  margin-top: 45px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.doctor_section .box .img-box {
+  width: 100%;
+}
+
+.doctor_section .box .img-box img {
+  width: 100%;
+}
+
+.doctor_section .box .detail-box {
+  width: 100%;
+  padding: 25px 15px;
+  text-align: center;
+  position: relative;
+}
+
+.doctor_section .box .detail-box .social_box {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 150%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.doctor_section .box .detail-box .social_box a {
+  color: #62d2a2;
+  margin: 0 10px;
+}
+
+.doctor_section .box .detail-box .social_box a:hover {
+  color: #1fab89;
+}
+
+.doctor_section .box:hover .social_box {
+  top: 0;
+  opacity: 1;
+}
+
+.doctor_section .btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 45px;
+}
+
+.doctor_section .btn-box a {
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: #1fab89;
+  color: #ffffff;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid #1fab89;
+}
+
+.doctor_section .btn-box a:hover {
+  background-color: transparent;
+  color: #1fab89;
+}

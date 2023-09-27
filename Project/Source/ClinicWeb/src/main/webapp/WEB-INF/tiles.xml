@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base" 
+                template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" 
+                       value="/WEB-INF/layout/header.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer" 
+                       value="/WEB-INF/layout/footer.jsp" />
+        <!--<put-attribute name="css" value="jjj" />-->
+    </definition>
+    <definition name="index" extends="base">
+        <put-attribute name="title" value="Trang chủ" />
+        <put-attribute name="content" 
+                       value="/WEB-INF/pages/index.jsp" />
+    </definition>
+    <definition name="login" extends="base">
+        <put-attribute name="title" value="Đăng Nhập Hệ Thống" />
+        <put-attribute name="content" value="/WEB-INF/pages/login.jsp" />
+    </definition>
+    <definition name="register" extends="base">
+        <put-attribute name="title" value="Đăng Ký Khám Bệnh" />
+        <put-attribute name="content" value="/WEB-INF/pages/register.jsp" />
+    </definition>
+    <definition name="appointment" extends="base">
+        <put-attribute name="title" value="Đặt lịch hẹn" />
+        <put-attribute name="content" value="/WEB-INF/pages/appointment.jsp" />
+    </definition>
+    <definition name="schedule" extends="base">
+        <put-attribute name="title" value="Lịch Trực Nhân Viên" />
+        <put-attribute name="content" value="/WEB-INF/pages/schedule.jsp" />
+    </definition>
+    <definition name="medicineList" extends="base">
+        <put-attribute name="title" value="Quản Lý Thuốc" />
+        <put-attribute name="content" value="/WEB-INF/pages/medicineList.jsp" />
+    </definition>
+    <definition name="medicine" extends="base">
+        <put-attribute name="title" value="Thêm Thuốc" />
+        <put-attribute name="content" value="/WEB-INF/pages/medicine.jsp" />
+    </definition>
+    <definition name="unitMedicine" extends="base">
+        <put-attribute name="title" value="Đơn Vị Thuốc" />
+        <put-attribute name="content" value="/WEB-INF/pages/unitMedicine.jsp" />
+    </definition>
+    <definition name="category" extends="base">
+        <put-attribute name="title" value="Loại Thuốc" />
+        <put-attribute name="content" value="/WEB-INF/pages/category.jsp" />
+    </definition>
+    <definition name="room" extends="base">
+        <put-attribute name="title" value="Phòng trực" />
+        <put-attribute name="content" value="/WEB-INF/pages/room.jsp" />
+    </definition>
+    <definition name="specialization" extends="base">
+        <put-attribute name="title" value="Khoa Bệnh" />
+        <put-attribute name="content" value="/WEB-INF/pages/specialization.jsp" />
+    </definition>
+    <definition name="viewSchedule" extends="base">
+        <put-attribute name="title" value="Lịch Trực" />
+        <put-attribute name="content" value="/WEB-INF/pages/viewSchedule.jsp" />
+    </definition>
+    <definition name="employee" extends="base">
+        <put-attribute name="title" value="Đăng Ký Nhân Viên" />
+        <put-attribute name="content" value="/WEB-INF/pages/employee.jsp" />
+    </definition>
+    <definition name="users" extends="base">
+        <put-attribute name="title" value="Nhân Viên" />
+        <put-attribute name="content" value="/WEB-INF/pages/users.jsp" />
+    </definition>
+    <definition name="infoUser" extends="base">
+        <put-attribute name="title" value="Thông tin tài khoản" />
+        <put-attribute name="content" value="/WEB-INF/pages/infoUser.jsp" />
+    </definition>
+    <definition name="listAppointment" extends="base">
+        <put-attribute name="title" value="Lịch Khám Bệnh" />
+        <put-attribute name="content" value="/WEB-INF/pages/listAppointment.jsp" />
+    </definition>
+    <definition name="medical" extends="base">
+        <put-attribute name="title" value="Khám Bệnh" />
+        <put-attribute name="content" value="/WEB-INF/pages/medical.jsp" />
+    </definition><definition name="prescription" extends="base">
+        <put-attribute name="title" value="Toa Thuốc" />
+        <put-attribute name="content" value="/WEB-INF/pages/prescription.jsp" />
+    </definition>
+    <definition name="history" extends="base">
+        <put-attribute name="title" value="Lịch Sử Khám" />
+        <put-attribute name="content" value="/WEB-INF/pages/history.jsp" />
+    </definition>
+    <definition name="detailHistory" extends="base">
+        <put-attribute name="title" value="Biểu mẫu bệnh án" />
+        <put-attribute name="content" value="/WEB-INF/pages/detailHistory.jsp" />
+    </definition>
+    <definition name="invoices" extends="base">
+        <put-attribute name="title" value="Thanh Toán" />
+        <put-attribute name="content" value="/WEB-INF/pages/invoices.jsp" />
+    </definition>
+    <definition name="payment" extends="base">
+        <put-attribute name="title" value="Thanh Toán" />
+        <put-attribute name="content" value="/WEB-INF/pages/payment.jsp" />
+    </definition>
+    <definition name="stat" extends="base">
+        <put-attribute name="title" value="Thống kê - báo cáo" />
+        <put-attribute name="content" value="/WEB-INF/pages/stat.jsp" />
+    </definition>
+    <definition name="changePassword" extends="base">
+        <put-attribute name="title" value="Đổi Mật Khẩu" />
+        <put-attribute name="content" value="/WEB-INF/pages/changePassword.jsp" />
+    </definition>
+</tiles-definitions>
+

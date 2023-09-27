@@ -1,0 +1,129 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Aug 4, 2023, 9:49:18 PM
+    Author     : Admin
+*/
+
+.table {
+    color: #333;
+    max-width: 100%;
+    margin-bottom: 0;
+    width: 100%;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #f8f9fa;
+}
+.table.no-border > tbody > tr > td,
+.table > tbody > tr > th,
+.table.no-border > tfoot > tr > td,
+.table.no-border > tfoot > tr > th,
+.table.no-border > thead > tr > td,
+.table.no-border > thead > tr > th {
+    border-top: 0;
+    padding: 10px 8px;
+}
+.table-nowrap td,
+.table-nowrap th {
+    white-space: nowrap
+}
+.table.dataTable {
+    border-collapse: collapse !important;
+}
+table.table td h2 {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+table.table td h2.table-avatar {
+    align-items: center;
+    display: inline-flex;
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+table.table td h2 a {
+    color: #333;
+}
+table.table td h2 a:hover {
+    color: #00d0f1;
+}
+table.table td h2 span {
+    color: #888;
+    display: block;
+    font-size: 12px;
+    margin-top: 3px;
+}
+.table thead {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+.table thead tr th {
+    font-weight: 600;
+    border: 0;
+}
+.table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.table tbody tr:last-child {
+    border-color: transparent;
+}
+.table.table-center td,
+.table.table-center th {
+    vertical-align: middle;
+}
+.table-hover tbody tr:hover {
+    background-color: #f7f7f7;
+}
+.table-hover tbody tr:hover td {
+    color: #474648;
+}
+.table-striped thead tr {
+    border-color: transparent;
+}
+.table-striped tbody tr {
+    border-color: transparent;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(235, 235, 235, 0.4);
+}
+.table-bordered {
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+.table-bordered th,
+.table-bordered td {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+.card-table .card-body {
+    padding: 0;
+}
+.card-table .card-body .table > thead > tr > th {
+    border-top: 0;
+}
+.card-table .card-body .table tr td:first-child,
+.card-table .card-body .table tr th:first-child {
+    padding-left: 1.5rem;
+}
+.card-table .card-body .table tr td:last-child,
+.card-table .card-body .table tr th:last-child {
+    padding-right: 1.5rem;
+}
+.card-table .table td, .card-table .table th {
+    border-top: 1px solid #e2e5e8;
+    padding: 1rem 0.75rem;
+    white-space: nowrap;
+}
+#delete_modal .modal-content {
+    text-align: center;
+}
