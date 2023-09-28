@@ -1,19 +1,23 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { MyUserContext, UserContext } from "../App";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from 'react-bootstrap/Image';
+import {UserRole} from '../configs/Enum'
 
 const Header = () => {
   const [currentUser, stateUser] = useContext(MyUserContext);
+  const navigate = useNavigate()
 
   const logout = () => {
     stateUser({
       'type': 'logout'
     })
+
+    navigate('/')
   }
 
   
@@ -27,6 +31,17 @@ const Header = () => {
           <Link to="/" className="nav-item nav-link">
             Trang Chủ
           </Link>
+          {/* Menu của bệnh nhân */}
+          {/* {currentUser.userRole === UserRole.PATIENT && <>
+            <Link to="/" className="nav-item nav-link">
+            Đăng ký lịch khám
+          </Link>
+          <Link to="/" className="nav-item nav-link">
+            Lịch Sử Khám
+          </Link> */}
+          {/* </>} */}
+          {/* Menu của y tá */}
+          {/* Menu của bác sỹ */}
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Nav>

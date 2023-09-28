@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { authUser, contentType, endpoints } from "../configs/Apis";
 import Loading from "../layout/Loading";
 import cookie from 'react-cookies'
+// import useCookies from 'react-cookies'
+import Cookies from "js-cookie";
 
 const InfoAcount = () => {
   const [currentUser, stateUser] = useContext(MyUserContext);
@@ -17,6 +19,7 @@ const InfoAcount = () => {
   const [isChange, setIsChange] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors , setErrors] = useState([])
+  // const [cookies, setCookies] = useCookies(['user'])
 
   //   Function
 
@@ -53,17 +56,17 @@ const InfoAcount = () => {
         endpoints["update-user"],
         form
       )
-      if (response.status === 202) alert(response.data["message"])
+      if (response.status === 200) alert(response.data["message"])
       cookie.save('user', response.data['data'])
-      stateUser({
-        'type': 'login',
-        'payload': cookie.load('user')
-      })
+        stateUser({
+          "type": "login",
+          "payload": response.data['data']
+        })
       setIsChange(false);
       setErrors([])
     } catch (ex) {
       let message = ex.response['data']['data']
-      setErrors(message)
+      setErrors([message])
       setIsChange(true);
     } finally {
       setLoading(false)
@@ -144,6 +147,7 @@ const InfoAcount = () => {
                       onChange={(evt) =>
                         changeValue("username", evt.target.value)
                       }
+                      readOnly
                     />
                   </div>
                   <div class="row gx-3 mb-3">
@@ -186,7 +190,7 @@ const InfoAcount = () => {
                     <label class="small mb-1">Email</label>
                     <Form.Control
                       class="form-control"
-                      type="email"
+                      type="text"
                       value={user.email}
                       onChange={(evt) => changeValue("email", evt.target.value)}
                     />

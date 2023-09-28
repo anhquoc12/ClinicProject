@@ -6,12 +6,11 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useContext, useEffect, useState } from "react";
-import Apis, { authUser, contentType, endpoints } from "../configs/Apis";
+import { useContext, useState } from "react";
+import Apis, { authUser, endpoints } from "../configs/Apis";
 import cookie from "react-cookies";
-import { MyUserContext, UserContext } from "../App";
+import { MyUserContext} from "../App";
 import { Alert } from "react-bootstrap";
-import Cookies from "js-cookie";
 
 const Login = () => {
   const [username, setUsername] = useState();
@@ -37,7 +36,6 @@ const Login = () => {
           "payload": data
         })
       } catch (ex) {
-        console.log(ex);
         setErr(true);
       }
     };
@@ -51,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="wid45 boxLogin">
+      <div className="wid50 boxLogin">
         <Form onSubmit={login}>
           <h1 className="mb-3 title">Đăng Nhập</h1>
           {err && (
@@ -98,7 +96,7 @@ const Login = () => {
           <hr />
           <h5 className="text-dark">
             Bạn Chưa có tài khoản?{" "}
-            <Link to="/">
+            <Link to="/register">
               <b>Đăng Nhập tại đây!</b>
             </Link>
           </h5>

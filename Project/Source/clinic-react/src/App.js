@@ -12,11 +12,14 @@ import MyUserReducer from './reducers/MyUserReducer';
 import cookie from 'react-cookies'
 import { Container } from 'react-bootstrap';
 import InfoAcount from './component/InfoAccount';
+import ChangePassword from './component/ChangePassword';
+import Register from './component/patient/Register';
 
 export const MyUserContext = createContext()
 
 function App() {
   const [currentUser, stateUser] = useReducer(MyUserReducer, cookie.load('user')|| null)
+
 
   return (
     <MyUserContext.Provider value={[currentUser, stateUser]}>
@@ -27,6 +30,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/account-setting' element={<InfoAcount />} />
+        <Route path='/account-setting/change-password' element={<ChangePassword />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
       </Container>
       <Footer />

@@ -1,0 +1,16 @@
+
+.form-data {
+    /* background-image: url('https://cdn4.vectorstock.com/i/1000x1000/91/48/empty-hospital-ward-background-clinic-room-vector-20599148.jpg'); */
+    background-color: #FFFFFF;
+    margin: 5em auto;
+    border: 1px solid #FEFEFE;
+    padding: 2rem;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.alert {
+    margin-left: 70%;
+    margin-top: 24px;
+    background-color: #F8D7DA;
+}

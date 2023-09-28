@@ -19,12 +19,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,6 +53,8 @@ public class ApiUserController {
     private JWTService jWTService;
     @Autowired
     private Cloudinary cloudinary;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/api/login/")
 //    @CrossOrigin
@@ -74,6 +78,7 @@ public class ApiUserController {
     public ResponseEntity<Message> updateUser(@RequestParam Map<String, String> params,
             @RequestPart(required = false) MultipartFile file, @Valid User user,
             BindingResult binding) {
+        System.out.println(file);
         user = this.userService.getUserById(Integer.parseInt(params.get("id")));
         user.setUsername(params.get("username"));
         user.setFullName(params.get("fullName"));
@@ -81,9 +86,9 @@ public class ApiUserController {
         user.setPhone(params.get("phone"));
         user.setAddress(params.get("address"));
         Message message = new Message();
-        if(binding.hasErrors()) {
+        if (binding.hasErrors()) {
             List<String> errors = new ArrayList<>();
-            for(ObjectError error : binding.getAllErrors()) {
+            for (ObjectError error : binding.getAllErrors()) {
                 errors.add(error.getDefaultMessage());
             }
             message.setData(errors);
@@ -108,6 +113,73 @@ public class ApiUserController {
 //        JsonNode result = new ObjectMapper().valueToTree(message);
         if (message.getData() != null) {
             return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/api/update/user/password/")
+    public ResponseEntity<Message> changePassword(@RequestParam Map<String, String> passwordParams,
+            Principal currentUser) {
+        User user = this.userService.getCurrentUser(currentUser.getName());
+        Message message = new Message();
+        if (this.passwordEncoder.matches(passwordParams.get("current"),
+                user.getPassword())) {
+            user.setPassword(this.passwordEncoder.encode(
+                    passwordParams.get("new")));
+            if (this.userService.addOrUpdateUser(user)) {
+                message.setMessage("Đổi mật khẩu thành công!!!");
+                message.setData(user);
+                return new ResponseEntity<>(message, HttpStatus.OK);
+            } else {
+                message.setMessage("Đổi mật khẩu không thành công!!!");
+                message.setData(user);
+                return new ResponseEntity<>(message, HttpStatus.OK);
+            }
+        }
+        message.setMessage("Mật khẩu hiện tại không đúng. Vui Lòng Nhập lại");
+        message.setData(null);
+        return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
+    }
+    
+    @PostMapping("/api/add/user/patient/")
+    public ResponseEntity<Message> addPatient(@RequestParam Map<String, String> patient,
+            @RequestPart MultipartFile file, @Valid User user,
+            BindingResult binding) {
+        user = new User();
+        user.setUsername(patient.get("username"));
+        user.setPassword(patient.get("password"));
+        user.setFullName(patient.get("fullName"));
+        user.setEmail(patient.get("email"));
+        user.setPhone(patient.get("phone"));
+        user.setAddress(patient.get("address"));
+        user.setUserRole(User.PATIENT);
+        System.out.println(user);
+        Message message = new Message();
+        if (binding.hasErrors()) {
+            List<String> errors = new ArrayList<>();
+            for (ObjectError error : binding.getAllErrors()) {
+                errors.add(error.getDefaultMessage());
+            }
+            message.setData(errors);
+            message.setMessage("Kiểm tra lại thông tin vừa nhập!!!");
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        if (file != null) {
+            try {
+                Map m = this.cloudinary.uploader().upload(file.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar((String) m.get("secure_url"));
+                if(this.userService.addOrUpdateUser(user)) {
+                    message.setMessage("Đăng Ký Thành Công");
+                    message.setData(user);
+                }
+            } catch (IOException ex) {
+                message.setMessage("Không thể upload ảnh đại diện");
+                message.setData(null);
+            }
+        }
+        if (message.getData() != null) {
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }

@@ -9,7 +9,11 @@ export const endpoints = {
     'authentication': {
         'current-user': `${SERVER_CONTEXT}/api/current-user/`
     },
-    'update-user': `${SERVER_CONTEXT}/api/update/user/`
+    'update-user': `${SERVER_CONTEXT}/api/update/user/`,
+    'change-password': `${SERVER_CONTEXT}/api/update/user/password/`,
+    'user': {
+        'add-patient': `${SERVER_CONTEXT}/api/add/user/patient/`
+    }
 }
 
 export const contentType = {
@@ -28,5 +32,8 @@ export const authUser = (type) => {
 }
 
 export default axios.create({
-    baseURL: SERVER
+    baseURL: SERVER,
+    headers: {
+        'Content-Type': contentType['form']
+    }
 })

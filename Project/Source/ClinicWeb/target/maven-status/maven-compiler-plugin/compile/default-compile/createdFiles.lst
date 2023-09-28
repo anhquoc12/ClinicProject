@@ -103,6 +103,7 @@ com\anhquoc0304\pojo\MedicalRecord.class
 com\anhquoc0304\validations\RoomName.class
 com\anhquoc0304\pojo\UnitMedicine.class
 com\anhquoc0304\service\EmailService.class
+com\anhquoc0304\utils\Password.class
 com\anhquoc0304\service\impl\UserServiceImpl.class
 com\anhquoc0304\repository\impl\SpecializationRepositoryImpl.class
 com\anhquoc0304\repository\impl\UserRepositoryImpl.class
