@@ -68,7 +68,8 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/update/user/**")
                 .authenticated()
                 .antMatchers("/api/current-user/**")
-                .authenticated();
+                .authenticated()
+                .antMatchers("/api/appointment/**").hasAuthority(User.PATIENT);
 
         http.antMatcher("/api/**").httpBasic()
                 .authenticationEntryPoint(restAuthenticationEntryPoint())
@@ -79,6 +80,7 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .antMatchers("/api/current-user/**")
                 .authenticated()
+                .antMatchers("/api/appointment/**").hasAuthority(User.PATIENT)
                 .anyRequest().permitAll()
                 .and()
                 .addFilterBefore(jWTAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)

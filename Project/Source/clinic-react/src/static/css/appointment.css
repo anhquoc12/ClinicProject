@@ -1,0 +1,71 @@
+.box-appoint {
+    margin-top: 12px;
+    margin-left: 10%;
+    margin-bottom: 20%;
+    width: 455px;
+    /* height: ; */
+    padding: 12px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuaOHJxQZHVnoSyO8IbQeV2JGAK2GTajBvIA&usqp=CAU'); */
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: white;
+}
+
+.title {
+    font-size: 1.3rem;
+    margin-bottom: 28px;
+    color: blue I !important;
+}
+
+.form-appointment {
+    font-family: 'Roboto Medium', sans-serif,;
+    margin: auto;
+}
+
+.form-appointment--select {
+    display: block;
+    height: 36px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid transparent;
+}
+
+.form-appointment--date {
+    display: block;
+    height: 36px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid lightgray;
+}
+
+.outline-bottom {
+    border-width: 0 0 1px 0;
+    outline: none;
+    width: 100%;
+}
+
+.submit {
+    margin-top: 5px;
+    background-color: #059FB7;
+    border: none;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.react-calendar {
+    padding: 12px;
+}
+.calendar {
+    /* height: 200px; */
+    position: absolute;
+    top: 10%;
+    right: 30%;
+}
+
+/* body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZSlbdb4IutflZgQ1NZGj7Rg9rTq-B4NVEWA&usqp=CAU');
+    background-repeat: no-repeat;
+    background-size: cover;
+} */

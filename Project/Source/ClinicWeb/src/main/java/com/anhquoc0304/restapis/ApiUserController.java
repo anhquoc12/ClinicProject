@@ -57,7 +57,6 @@ public class ApiUserController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/api/login/")
-//    @CrossOrigin
     public ResponseEntity<String> login(@RequestBody User user) {
         if (this.userService.authUser(user.getUsername(), user.getPassword())) {
             String token = this.jWTService.genarateTokenLogin(user.getUsername());

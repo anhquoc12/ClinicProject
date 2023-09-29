@@ -2,7 +2,7 @@ import { Button, Col, Form, Row, Toast } from "react-bootstrap";
 import "../../static/css/register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Apis, { endpoints } from "../../configs/Apis";
+import Apis, { api, contentType, endpoints } from "../../configs/Apis";
 import Loading from "../../layout/Loading";
 
 const Register = () => {
@@ -42,7 +42,7 @@ const Register = () => {
 
       console.log(patient);
       setLoading(true);
-      let res = await Apis.post(endpoints["user"]["add-patient"], params);
+      let res = await api(contentType['form']).post(endpoints["user"]["add-patient"], params);
       if (res.status === 201) {
         alert(res.data["message"]);
         navigate("/login");
@@ -50,8 +50,6 @@ const Register = () => {
     } catch (ex) {
       let message = ex.response["data"]["data"];
       setErrors(message);
-      console.log(errors);
-      console.log(ex);
     } finally {
       setLoading(false);
     }

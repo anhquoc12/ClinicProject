@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState } from "react";
-import Apis, { authUser, endpoints } from "../configs/Apis";
+import Apis, { api, authUser, contentType, endpoints } from "../configs/Apis";
 import cookie from "react-cookies";
 import { MyUserContext} from "../App";
 import { Alert } from "react-bootstrap";
@@ -22,7 +22,7 @@ const Login = () => {
     evt.preventDefault();
     const process = async () => {
       try {
-        let response = await Apis.post(endpoints["login"], {
+        let response = await api(contentType['json']).post(endpoints["login"], {
           username: username,
           password: password,
         });
@@ -36,6 +36,7 @@ const Login = () => {
           "payload": data
         })
       } catch (ex) {
+        console.log(ex)
         setErr(true);
       }
     };

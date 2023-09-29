@@ -8,6 +8,9 @@ import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.repository.SpecializationRepository;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -29,7 +32,12 @@ public class SpecializationRepositoryImpl implements SpecializationRepository {
     @Override
     public List<Specialization> getSpecials() {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM Specialization s ORDER BY s.id");
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Specialization> query = builder.createQuery(Specialization.class);
+        Root<Specialization> rootS = query.from(Specialization.class);
+        Query q = s.createQuery(query);
+        
+//        Query q = s.createQuery("FROM Specialization s ORDER BY s.id");
         return q.getResultList();
     }
 
