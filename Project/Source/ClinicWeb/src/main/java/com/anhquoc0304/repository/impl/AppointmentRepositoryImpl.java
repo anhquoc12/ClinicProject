@@ -10,6 +10,10 @@ import com.anhquoc0304.repository.AppointmentRepository;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +76,16 @@ public class AppointmentRepositoryImpl implements AppointmentRepository{
     @Override
     public List<Appointment> getAppointmentByCurrentUser(User user) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM Appointment a WHERE a.patientId.id=: id ORDER BY a.createdDate ASC");
-        q.setParameter("id", user.getId());
+        
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Appointment> query = builder.createQuery(Appointment.class);
+        Root<Appointment> rAppointment = query.from(Appointment.class);
+        query.orderBy(builder.asc(rAppointment.get("appointmentStatus")));
+        Query q = s.createQuery(query);
+        
+        
+//        Query q = s.createQuery("FROM Appointment a WHERE a.patientId.id=: id ORDER BY a.createdDate DESC");
+//        q.setParameter("id", user.getId());
         return q.getResultList();
     }
 

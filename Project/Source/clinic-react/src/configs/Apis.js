@@ -1,8 +1,8 @@
 import axios from "axios"
 import cookie from 'react-cookies'
 
-const SERVER_CONTEXT = '/ClinicWeb'
-const SERVER = 'http://localhost:8080'
+export const SERVER_CONTEXT = '/ClinicWeb'
+export const SERVER = 'http://localhost:8080'
 
 export const endpoints = {
     'login': `${SERVER_CONTEXT}/api/login/`,
@@ -21,6 +21,10 @@ export const endpoints = {
         'add': `${SERVER_CONTEXT}/api/appointment/register/`,
         'list': `${SERVER_CONTEXT}/api/appointment/lists/`,
         'cancle': `${SERVER_CONTEXT}/api/appointment/cancle/`,
+        'confirmed': `${SERVER_CONTEXT}/api/nurse/list-appoitment/confirm/`,
+        'confirm-appointment': `${SERVER_CONTEXT}/api/nurse/appointment/confirm/`,
+        'present': `${SERVER_CONTEXT}/api/nurse/list-appoitment/present/`,
+        'present-appointment': `${SERVER_CONTEXT}/api/nurse/appointment/present/`
     }
 }
 

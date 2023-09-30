@@ -1,11 +1,8 @@
-import { Alert, Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "../../static/css/appointment.css";
 import Calendar from "react-calendar";
-import { useContext, useEffect, useState } from "react";
-import { APPOINTMENT_STATUS } from "../../configs/Enum";
-import { MyUserContext } from "../../App";
-import { type } from "@testing-library/user-event/dist/type";
-import Apis, {
+import { useEffect, useState } from "react";
+import  {
   api,
   authUser,
   contentType,
@@ -13,6 +10,8 @@ import Apis, {
 } from "../../configs/Apis";
 import Loading from "../../layout/Loading";
 import { Link, useNavigate } from "react-router-dom";
+import { Redirect } from "../../configs/Permission";
+import Forbidden from "../../error-pages/Forbidden";
 
 const Appointment = () => {
   const [specializations, setSpecializations] = useState(null);
@@ -101,6 +100,10 @@ const Appointment = () => {
   }, [seconds]);
 
   if (specializations === null) return <Loading />;
+
+  // if(!Redirect()) {
+  //   return <Forbidden />
+  // }
 
   return (
     <>
