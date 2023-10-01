@@ -24,7 +24,11 @@ export const endpoints = {
         'confirmed': `${SERVER_CONTEXT}/api/nurse/list-appoitment/confirm/`,
         'confirm-appointment': `${SERVER_CONTEXT}/api/nurse/appointment/confirm/`,
         'present': `${SERVER_CONTEXT}/api/nurse/list-appoitment/present/`,
-        'present-appointment': `${SERVER_CONTEXT}/api/nurse/appointment/present/`
+        'present-appointment': `${SERVER_CONTEXT}/api/nurse/appointment/present/`,
+        'patient-medicals': `${SERVER_CONTEXT}/api/doctor/list-patients/`
+    },
+    'medical': {
+        'add': `${SERVER_CONTEXT}/api/doctor/medical/add/`
     }
 }
 

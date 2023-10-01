@@ -5,8 +5,14 @@
 package com.anhquoc0304.repository.impl;
 
 import com.anhquoc0304.pojo.Doctor;
+import com.anhquoc0304.pojo.Specialization;
+import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.DoctorRepository;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;

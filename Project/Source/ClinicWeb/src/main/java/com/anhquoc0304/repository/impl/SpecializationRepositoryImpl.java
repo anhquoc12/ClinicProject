@@ -4,12 +4,17 @@
  */
 package com.anhquoc0304.repository.impl;
 
+import com.anhquoc0304.pojo.Doctor;
 import com.anhquoc0304.pojo.Specialization;
+import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.SpecializationRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import org.hibernate.HibernateException;
@@ -36,8 +41,6 @@ public class SpecializationRepositoryImpl implements SpecializationRepository {
         CriteriaQuery<Specialization> query = builder.createQuery(Specialization.class);
         Root<Specialization> rootS = query.from(Specialization.class);
         Query q = s.createQuery(query);
-        
-//        Query q = s.createQuery("FROM Specialization s ORDER BY s.id");
         return q.getResultList();
     }
 
@@ -82,6 +85,19 @@ public class SpecializationRepositoryImpl implements SpecializationRepository {
             if (sp.getName().equals(name))
                 return true;
         return false;
+    }
+
+    @Override
+    public Specialization getSpecializationByDoctor(User d) {
+         Session s = this.factory.getObject().getCurrentSession();
+         CriteriaBuilder builder = s.getCriteriaBuilder();
+         CriteriaQuery<Specialization> query = builder.createQuery(Specialization.class);
+         Root<Specialization> rSpecial = query.from(Specialization.class);
+         Join<Specialization, User> jUser = rSpecial.join("id");
+//         Join<Doctor, Specialization> jSpecialization = jUser.join("specializationId");
+         query.where(builder.equal(jUser.get("id"), d.getId()));
+         Query q = s.createQuery(query);
+         return (Specialization) q.getResultList().get(0);
     }
 
 }

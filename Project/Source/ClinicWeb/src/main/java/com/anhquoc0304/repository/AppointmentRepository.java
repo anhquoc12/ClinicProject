@@ -5,6 +5,7 @@
 package com.anhquoc0304.repository;
 
 import com.anhquoc0304.pojo.Appointment;
+import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.pojo.User;
 import java.util.Date;
 import java.util.List;
@@ -23,4 +24,5 @@ public interface AppointmentRepository {
     public boolean setAppointmentStatus(Appointment a, String status);
     public List<Appointment> getAppointmentToday();
     public Appointment getAppointmentByPatientId(User patient);
+    public List<Appointment> getAppointmentTodayBySpecialization(Specialization specialization);
 }

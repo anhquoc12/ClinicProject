@@ -6,9 +6,13 @@ package com.anhquoc0304.restapis;
 
 import com.anhquoc0304.dto.Message;
 import com.anhquoc0304.pojo.Appointment;
+import com.anhquoc0304.pojo.Doctor;
+import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.service.AppointmentService;
+import com.anhquoc0304.service.DoctorService;
 import com.anhquoc0304.service.EmailService;
+import com.anhquoc0304.service.SpecializationService;
 import com.anhquoc0304.service.UserService;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
@@ -40,6 +44,10 @@ public class ApiAppointmentController {
     private AppointmentService appointmentService;
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private DoctorService doctorService;
+    @Autowired
+    private SpecializationService specService;
 
     @PostMapping("/api/appointment/register/")
     public ResponseEntity<Message> registerAppointment(@RequestBody Appointment appointment,
@@ -140,6 +148,14 @@ public class ApiAppointmentController {
                 this.appointmentService
                         .getAppointmentToday(),
                 HttpStatus.OK);
+    }
+    
+    @GetMapping(path = "/api/doctor/list-patients/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Appointment>> listPatientAppointment(Principal p) {
+        return new ResponseEntity<>(
+                this.appointmentService
+                        .getAppointmentByStatus(Appointment.PRESENT),
+        HttpStatus.OK);
     }
     
     @PostMapping(path = "/api/nurse/appointment/present/")

@@ -4,7 +4,9 @@
  */
 package com.anhquoc0304.service;
 
+import com.anhquoc0304.pojo.Doctor;
 import com.anhquoc0304.pojo.Specialization;
+import com.anhquoc0304.pojo.User;
 import java.util.List;
 
 /**
@@ -17,4 +19,5 @@ public interface SpecializationService {
     boolean addSpecialization(Specialization spec);
     boolean deleteSpecialization(Specialization spec);
     boolean existName(String name);
+    Specialization getSpecializationByDoctor(User d);
 }

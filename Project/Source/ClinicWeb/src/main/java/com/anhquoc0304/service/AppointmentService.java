@@ -5,6 +5,7 @@
 package com.anhquoc0304.service;
 
 import com.anhquoc0304.pojo.Appointment;
+import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.pojo.User;
 import java.util.Date;
 import java.util.List;
@@ -23,4 +24,5 @@ public interface AppointmentService {
     Appointment getAppointmentById(int id);
     List<Appointment> getAppointmentToday();
     Appointment getAppointmentByPatientId(User patient);
+//    List<PatientAppointmentSpecialization> getAppointmentTodayBySpecialization(Specialization specialization);
 }

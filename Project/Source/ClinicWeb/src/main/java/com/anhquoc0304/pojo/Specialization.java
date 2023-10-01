@@ -48,7 +48,7 @@ public class Specialization implements Serializable {
     @NotEmpty(message = "{specialization.name.notEmptyMsg}")
     @SpecializationName(message = "{specialization.name.uniqueMsg}")
     private String name;
-    @OneToMany(mappedBy = "specializationId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "specializationId")
     @JsonIgnore
     private Set<Doctor> doctorSet;
     @OneToMany(mappedBy = "specializationId")

@@ -5,14 +5,17 @@
 package com.anhquoc0304.repository.impl;
 
 import com.anhquoc0304.pojo.Appointment;
+import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.AppointmentRepository;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -82,10 +85,6 @@ public class AppointmentRepositoryImpl implements AppointmentRepository{
         Root<Appointment> rAppointment = query.from(Appointment.class);
         query.orderBy(builder.asc(rAppointment.get("appointmentStatus")));
         Query q = s.createQuery(query);
-        
-        
-//        Query q = s.createQuery("FROM Appointment a WHERE a.patientId.id=: id ORDER BY a.createdDate DESC");
-//        q.setParameter("id", user.getId());
         return q.getResultList();
     }
 
@@ -131,6 +130,21 @@ public class AppointmentRepositoryImpl implements AppointmentRepository{
         q.setParameter("patientId", patient.getId());
         q.setParameter("status", Appointment.PRESENT);
         return (Appointment) q.getResultList().get(0);
+    }
+
+    @Override
+    public List<Appointment> getAppointmentTodayBySpecialization(Specialization specialization) {
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Appointment> query = builder.createQuery(Appointment.class);
+        Root<Appointment> rAppointment = query.from(Appointment.class);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rAppointment.get("specializationId"), specialization));
+        predicates.add(builder.equal(rAppointment.get("appointmentDate"), builder.currentDate()));
+        predicates.add(builder.equal(rAppointment.get("appointmentStatus"), Appointment.CONFIRMED));
+        query.where(predicates.toArray(Predicate[]::new));
+        Query q = s.createQuery(query);
+        return q.getResultList();
     }
     
 }

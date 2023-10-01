@@ -5,7 +5,10 @@
 package com.anhquoc0304.service.impl;
 
 import com.anhquoc0304.pojo.Doctor;
+import com.anhquoc0304.pojo.Specialization;
+import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.DoctorRepository;
+import com.anhquoc0304.repository.SpecializationRepository;
 import com.anhquoc0304.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

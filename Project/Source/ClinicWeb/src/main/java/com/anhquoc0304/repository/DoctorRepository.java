@@ -5,6 +5,7 @@
 package com.anhquoc0304.repository;
 
 import com.anhquoc0304.pojo.Doctor;
+import com.anhquoc0304.pojo.User;
 
 /**
  *

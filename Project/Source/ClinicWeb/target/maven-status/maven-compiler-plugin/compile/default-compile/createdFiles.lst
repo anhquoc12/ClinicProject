@@ -1,9 +1,7 @@
-com\anhquoc0304\controllers\MedicalRecordController.class
 com\anhquoc0304\validations\ScheduleTime.class
 com\anhquoc0304\filters\CustomAccessDeniedHandlers.class
 com\anhquoc0304\configs\JavaMailConfig$1.class
 com\anhquoc0304\formatters\CategoryFormatters.class
-com\anhquoc0304\controllers\MedicineController.class
 com\anhquoc0304\service\UserService.class
 com\anhquoc0304\pojo\Appointment.class
 com\anhquoc0304\pojo\Doctor.class
@@ -29,12 +27,10 @@ com\anhquoc0304\service\MedicalRecordService.class
 com\anhquoc0304\formatters\UnitMedicineFormatters.class
 com\anhquoc0304\repository\impl\MedicineRepositoryImpl.class
 com\anhquoc0304\repository\impl\RoomRepositoryImpl.class
-com\anhquoc0304\controllers\UserController.class
 com\anhquoc0304\repository\MedicineRepository.class
 com\anhquoc0304\repository\impl\MedicalRecordRepositoryImpl.class
 com\anhquoc0304\dto\Message.class
 com\anhquoc0304\service\PrescriptionService.class
-com\anhquoc0304\controllers\StatController.class
 com\anhquoc0304\service\AppointmentService.class
 com\anhquoc0304\service\impl\StatServiceImpl.class
 com\anhquoc0304\validations\impl\ScheduleTimeValidation.class
@@ -59,12 +55,10 @@ com\anhquoc0304\repository\ScheduleRepository.class
 com\anhquoc0304\repository\impl\ScheduleReopositoryImpl.class
 com\anhquoc0304\pojo\Medicine.class
 com\anhquoc0304\repository\impl\PrescriptionRepositoryImpl.class
-com\anhquoc0304\controllers\ScheduleController.class
 com\anhquoc0304\service\StatService.class
 com\anhquoc0304\repository\PrescriptionRepository.class
 com\anhquoc0304\configs\SpringSecurityConfig.class
 com\anhquoc0304\clinicweb\JAXRSConfiguration.class
-com\anhquoc0304\controllers\InvoiceController.class
 com\anhquoc0304\formatters\RoomFormatters.class
 com\anhquoc0304\validations\MedicineName.class
 com\anhquoc0304\formatters\SpecializationFormatters.class
@@ -81,10 +75,8 @@ com\anhquoc0304\service\impl\DoctorServiceImpl.class
 com\anhquoc0304\configs\HibernateConfigs.class
 com\anhquoc0304\repository\UnitMedicineRepository.class
 com\anhquoc0304\controllers\IndexController.class
-com\anhquoc0304\controllers\AdminController.class
 com\anhquoc0304\repository\CategoryRepository.class
 com\anhquoc0304\configs\SecurityWebApplicationInitializer.class
-com\anhquoc0304\controllers\AppointmentController.class
 com\anhquoc0304\pojo\Schedule.class
 com\anhquoc0304\repository\AppointmentRepository.class
 com\anhquoc0304\configs\WebAppContextConfig.class
@@ -110,6 +102,7 @@ com\anhquoc0304\pojo\Room.class
 com\anhquoc0304\pojo\Prescription.class
 com\anhquoc0304\repository\RoomRepository.class
 com\anhquoc0304\repository\impl\DoctorRepositoryImpl.class
+com\anhquoc0304\restapis\ApiMedicalRecord.class
 com\anhquoc0304\validations\SpecializationName.class
 com\anhquoc0304\service\impl\PrescriptionServiceImpl.class
 com\anhquoc0304\service\InvoiceService.class

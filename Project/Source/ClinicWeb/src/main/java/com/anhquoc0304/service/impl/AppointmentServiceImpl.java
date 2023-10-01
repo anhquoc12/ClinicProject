@@ -5,9 +5,11 @@
 package com.anhquoc0304.service.impl;
 
 import com.anhquoc0304.pojo.Appointment;
+import com.anhquoc0304.pojo.Specialization;
 import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.AppointmentRepository;
 import com.anhquoc0304.service.AppointmentService;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

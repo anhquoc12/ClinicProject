@@ -4,7 +4,9 @@
  */
 package com.anhquoc0304.service.impl;
 
+import com.anhquoc0304.pojo.Doctor;
 import com.anhquoc0304.pojo.Specialization;
+import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.SpecializationRepository;
 import com.anhquoc0304.service.SpecializationService;
 import java.util.List;
@@ -42,6 +44,11 @@ public class SpecializationServiceImpl implements SpecializationService {
     @Override
     public boolean existName(String name) {
         return this.specRepo.existName(name);
+    }
+
+    @Override
+    public Specialization getSpecializationByDoctor(User d) {
+        return this.specRepo.getSpecializationByDoctor(d);
     }
     
 }
