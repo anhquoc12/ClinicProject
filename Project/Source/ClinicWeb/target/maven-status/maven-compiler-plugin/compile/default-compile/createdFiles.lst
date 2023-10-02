@@ -106,3 +106,4 @@ com\anhquoc0304\restapis\ApiMedicalRecord.class
 com\anhquoc0304\validations\SpecializationName.class
 com\anhquoc0304\service\impl\PrescriptionServiceImpl.class
 com\anhquoc0304\service\InvoiceService.class
+com\anhquoc0304\restapis\ApiMedicineControllers.class

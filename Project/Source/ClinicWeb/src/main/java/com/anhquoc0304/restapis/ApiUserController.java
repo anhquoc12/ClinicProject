@@ -182,4 +182,10 @@ public class ApiUserController {
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
+    
+    @GetMapping("/api/user/{id}")
+    public ResponseEntity<User> getUserByID(@PathVariable(value = "id") int id) {
+        return new ResponseEntity<>(this.userService.getUserById(id),
+        HttpStatus.OK);
+    }
 }

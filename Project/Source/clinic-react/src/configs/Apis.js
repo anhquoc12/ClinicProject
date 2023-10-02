@@ -6,14 +6,15 @@ export const SERVER = 'http://localhost:8080'
 
 export const endpoints = {
     'login': `${SERVER_CONTEXT}/api/login/`,
+    'user': {
+        'user-id': (userId) => `${SERVER_CONTEXT}/api/user/${userId}/`
+    },
     'authentication': {
-        'current-user': `${SERVER_CONTEXT}/api/current-user/`
+        'current-user': `${SERVER_CONTEXT}/api/current-user/`,
+        'add-patient': `${SERVER_CONTEXT}/api/add/user/patient/`
     },
     'update-user': `${SERVER_CONTEXT}/api/update/user/`,
     'change-password': `${SERVER_CONTEXT}/api/update/user/password/`,
-    'user': {
-        'add-patient': `${SERVER_CONTEXT}/api/add/user/patient/`
-    },
     'specialization': {
         'lists': `${SERVER_CONTEXT}/api/specialization/lists/`
     },
@@ -28,7 +29,14 @@ export const endpoints = {
         'patient-medicals': `${SERVER_CONTEXT}/api/doctor/list-patients/`
     },
     'medical': {
-        'add': `${SERVER_CONTEXT}/api/doctor/medical/add/`
+        'add': `${SERVER_CONTEXT}/api/doctor/medical/add/`,
+        'add-presrciption': (id) => `${SERVER_CONTEXT}/api/doctor/medical/prescription/${id}/`
+    },
+    'medicine': {
+        'list': `${SERVER_CONTEXT}/api/employee/medicine/list/`
+    },
+    'category': {
+        'categories': `${SERVER_CONTEXT}/api/employee/medicine/categories/`
     }
 }
 

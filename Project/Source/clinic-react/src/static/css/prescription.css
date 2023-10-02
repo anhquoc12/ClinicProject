@@ -1,0 +1,10 @@
+.box-medicine {
+    width: 90%;
+    margin: auto;
+}
+
+.over--medicine {
+    overflow-x: scroll;
+    /* overflow-y: hidden; */
+    height: 500px;
+}

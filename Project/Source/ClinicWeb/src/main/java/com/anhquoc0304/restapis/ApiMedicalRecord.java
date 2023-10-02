@@ -5,21 +5,38 @@
 package com.anhquoc0304.restapis;
 
 import com.anhquoc0304.dto.Message;
+import com.anhquoc0304.pojo.Invoice;
 import com.anhquoc0304.pojo.MedicalRecord;
+import com.anhquoc0304.pojo.Medicine;
+import com.anhquoc0304.pojo.Prescription;
 import com.anhquoc0304.pojo.User;
+import com.anhquoc0304.service.InvoiceService;
 import com.anhquoc0304.service.MedicalRecordService;
+import com.anhquoc0304.service.MedicineService;
+import com.anhquoc0304.service.PrescriptionService;
 import com.anhquoc0304.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.xml.ws.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +54,12 @@ public class ApiMedicalRecord {
     private UserService userService;
     @Autowired
     private MedicalRecordService medicalService;
+    @Autowired
+    private InvoiceService invoiceService;
+    @Autowired
+    private MedicineService medicineService;
+    @Autowired
+    private PrescriptionService prescriptionService;
 
     @PostMapping("/api/doctor/medical/add/")
     public ResponseEntity<Message> addMedical(Principal p,
@@ -60,12 +83,54 @@ public class ApiMedicalRecord {
         medicalRecord.setCreatedDate(new Date());
         Message message = new Message();
         if (this.medicalService.addMedicalRecord(medicalRecord)) {
-            message.setMessage("Thêm toa thuốc");
-            message.setData(medicalRecord);
-            return new ResponseEntity<>(message, HttpStatus.CREATED);
+            Invoice i = new Invoice();
+            i.setCreateDate(new Date());
+            i.setMedicalRecordId(medicalRecord);
+            if (this.invoiceService.createInvoiceBeforePay(i)) {
+                message.setMessage("Thêm toa thuốc");
+                message.setData(medicalRecord);
+                return new ResponseEntity<>(message, HttpStatus.CREATED);
+            }
         }
         message.setMessage("Kiểm tra thông tin nhập");
         message.setData(null);
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping(path = "/api/doctor/medical/prescription/{id}/",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Message> addPrescription(HttpServletRequest servlet,
+            @PathVariable(value = "id") int medicalId) {
+        try {
+            BufferedReader reader = servlet.getReader();
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+
+            JsonNode node = new ObjectMapper().readTree(sb.toString());
+            List<Prescription> prescriptions = new ArrayList<>();
+            for (int i = 0; i < node.size(); i++) {
+                Prescription p = new Prescription();
+                p.setMedicalRecordId(this.medicalService.getMedicalRecordById(medicalId));
+                p.setDosage(node.get(i).get("dosage").asText());
+                p.setFrequency(node.get(i).get("frequency").asText());
+                p.setTotalUnit(node.get(i).get("totalUnit").asInt());
+                p.setDuration(node.get(i).get("duration").asText());
+                p.setMedicineId(this.medicineService.getMedicineById(node.get(i).get("medicineId").asInt()));
+                prescriptions.add(p);
+            }
+            if (this.prescriptionService.saveToDatabasePrescription(prescriptions)) {
+                Message message = new Message();
+                message.setMessage("Hoàn thành khám bệnh.");
+                return new ResponseEntity<>(message, HttpStatus.CREATED);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Message message = new Message();
+        message.setMessage("Có lỗi xảy ra.");
+        return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

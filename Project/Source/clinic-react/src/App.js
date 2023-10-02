@@ -22,6 +22,7 @@ import PermissionRoute from './route/PermissionRoute';
 import Confirmed from './component/nurse/Confirmed';
 import Today from './component/nurse/Today';
 import Medical from './component/doctor/Medical';
+import Prescription from './component/doctor/Presciption';
 
 export const MyUserContext = createContext()
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/nurse/confirmed' element={<PermissionRoute path='/nurse/confirmed' component={<Confirmed />} />} />
         <Route path='/nurse/present' element={<PermissionRoute path='/nurse/present' component={<Today />} />} />
         <Route path='/doctor/medical' element={<PermissionRoute path='/doctor/medical' component={<Medical />} />} />
+        <Route path='/doctor/medical/prescription/:medicalId/:patientId' element={<PermissionRoute path='/doctor/medical/prescription/:medicalId/:patientId' component={<Prescription />} />} />
         <Route path='/forbidden' element={<Forbidden />} />
       </Routes>
       {/* </Container> */}

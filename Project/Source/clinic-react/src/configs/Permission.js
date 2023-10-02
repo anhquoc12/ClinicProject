@@ -11,5 +11,6 @@ export const Permission = {
     '/list-appointment': roles([USER_ROLE.PATIENT]),
     '/nurse/confirmed': roles([USER_ROLE.NURSE]),
     '/nurse/present': roles([USER_ROLE.NURSE]),
-    '/doctor/medical': roles([USER_ROLE.DOCTOR])
+    '/doctor/medical': roles([USER_ROLE.DOCTOR]),
+    '/doctor/medical/prescription/:medicalId/:patientId': roles([USER_ROLE.DOCTOR])
 }

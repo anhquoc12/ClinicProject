@@ -69,9 +69,12 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .antMatchers("/api/current-user/**")
                 .authenticated()
+                .antMatchers("/api/user/**").authenticated()
                 .antMatchers("/api/appointment/**").hasAuthority(User.PATIENT)
                 .antMatchers("/api/doctor/**").hasAuthority(User.DOCTOR)
-                .antMatchers("/api/nurse/**").hasAuthority(User.NURSE);
+                .antMatchers("/api/nurse/**").hasAuthority(User.NURSE)
+                .antMatchers("/api/employee/**").hasAnyAuthority(User.OWNER,
+                        User.ADMIN,User.NURSE, User.DOCTOR);
 
         http.antMatcher("/api/**").httpBasic()
                 .authenticationEntryPoint(restAuthenticationEntryPoint())
@@ -82,9 +85,12 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .antMatchers("/api/current-user/**")
                 .authenticated()
+                .antMatchers("/api/user/**").authenticated()
                 .antMatchers("/api/appointment/**").hasAuthority(User.PATIENT)
                 .antMatchers("/api/doctor/**").hasAuthority(User.DOCTOR)
                 .antMatchers("/api/nurse/**").hasAuthority(User.NURSE)
+                .antMatchers("/api/employee/**").hasAnyAuthority(User.OWNER,
+                        User.ADMIN,User.NURSE, User.DOCTOR)
                 .anyRequest().permitAll()
                 .and()
                 .addFilterBefore(jWTAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
