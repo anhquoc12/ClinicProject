@@ -14,7 +14,6 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
@@ -54,7 +53,7 @@ public class AppointmentRepositoryImpl implements AppointmentRepository{
     @Override
     public boolean countAppointment(Date d) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("SELECT COUNT(*) FROM Appointment a WHERE a.appointmentDate=: date");
+        Query q = s.createQuery("SELECT COUNT(*) FROM Appointment a WHERE a.appoinmentDate =: date");
         q.setParameter("date", d);
         int number = Integer.parseInt(q.getSingleResult().toString());
         return number < Integer.parseInt(env.getProperty("count.appointment"));

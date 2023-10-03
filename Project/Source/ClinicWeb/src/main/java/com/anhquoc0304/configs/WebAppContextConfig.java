@@ -4,11 +4,7 @@
  */
 package com.anhquoc0304.configs;
 
-import com.anhquoc0304.formatters.CategoryFormatters;
-import com.anhquoc0304.formatters.RoomFormatters;
-import com.anhquoc0304.formatters.SpecializationFormatters;
-import com.anhquoc0304.formatters.UnitMedicineFormatters;
-import com.anhquoc0304.formatters.UserFormatters;
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import java.util.HashSet;
@@ -59,15 +55,6 @@ public class WebAppContextConfig implements WebMvcConfigurer {
                 .addResourceLocations("/resources/images/");
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("/resources/scripts/");
-    }
-
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new CategoryFormatters());
-        registry.addFormatter(new UnitMedicineFormatters());
-        registry.addFormatter(new UserFormatters());
-        registry.addFormatter(new RoomFormatters());
-        registry.addFormatter(new SpecializationFormatters());
     }
     
     @Bean

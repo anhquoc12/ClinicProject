@@ -4,7 +4,7 @@
  */
 package com.anhquoc0304.pojo;
 
-import com.anhquoc0304.validations.ScheduleTime;
+//import com.anhquoc0304.validations.ScheduleTime;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -39,7 +39,7 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "Schedule.findByScheduleDate", query = "SELECT s FROM Schedule s WHERE s.scheduleDate = :scheduleDate"),
     @NamedQuery(name = "Schedule.findByShiftStart", query = "SELECT s FROM Schedule s WHERE s.shiftStart = :shiftStart"),
     @NamedQuery(name = "Schedule.findByShiftEnd", query = "SELECT s FROM Schedule s WHERE s.shiftEnd = :shiftEnd")})
-@ScheduleTime(message = "{schedule.shiftStart.lessThanShiftEnd}")
+//@ScheduleTime(message = "{schedule.shiftStart.lessThanShiftEnd}")
 public class Schedule implements Serializable {
 
     private static final long serialVersionUID = 1L;

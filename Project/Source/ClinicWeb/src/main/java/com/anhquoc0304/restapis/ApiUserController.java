@@ -188,4 +188,10 @@ public class ApiUserController {
         return new ResponseEntity<>(this.userService.getUserById(id),
         HttpStatus.OK);
     }
+    
+    @GetMapping(path = "/api/user/patients/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Object[]>> getPatients() {
+        return new ResponseEntity<>(this.userService.getUserByUserRole(User.PATIENT),
+        HttpStatus.OK);
+    }
 }

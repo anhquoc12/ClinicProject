@@ -33,8 +33,8 @@ public class MedicalRecordServiceImpl implements MedicalRecordService{
     }
 
     @Override
-    public List<MedicalRecord> getMedicals(Date date) {
-        return this.medicalRepository.getMedicals(date);
+    public List<MedicalRecord> getMedicals(Date date, int patient) {
+        return this.medicalRepository.getMedicals(date, patient);
     }
     
 }

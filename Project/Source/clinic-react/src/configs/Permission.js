@@ -12,5 +12,7 @@ export const Permission = {
     '/nurse/confirmed': roles([USER_ROLE.NURSE]),
     '/nurse/present': roles([USER_ROLE.NURSE]),
     '/doctor/medical': roles([USER_ROLE.DOCTOR]),
-    '/doctor/medical/prescription/:medicalId/:patientId': roles([USER_ROLE.DOCTOR])
+    '/doctor/medical/prescription/:medicalId/:patientId': roles([USER_ROLE.DOCTOR]),
+    '/doctor/medical/history': roles([USER_ROLE.DOCTOR]),
+    '/doctor/medical/history/:medicalId': roles([USER_ROLE.DOCTOR])
 }

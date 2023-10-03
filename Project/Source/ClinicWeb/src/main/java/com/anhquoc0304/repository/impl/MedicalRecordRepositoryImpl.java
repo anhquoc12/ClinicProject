@@ -5,7 +5,9 @@
 package com.anhquoc0304.repository.impl;
 
 import com.anhquoc0304.pojo.MedicalRecord;
+import com.anhquoc0304.pojo.User;
 import com.anhquoc0304.repository.MedicalRecordRepository;
+import com.anhquoc0304.repository.UserRepository;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
@@ -23,8 +25,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
+
     @Autowired
     private LocalSessionFactoryBean factory;
+    @Autowired
+    private UserRepository userRepo;
 
     @Override
     public boolean addMedicalRecord(MedicalRecord m) {
@@ -47,15 +52,25 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
     }
 
     @Override
-    public List<MedicalRecord> getMedicals(Date date) {
+    public List<MedicalRecord> getMedicals(Date date, int patient) {
         Session s = this.factory.getObject().getCurrentSession();
         String sql = "FROM MedicalRecord m ";
-        if (date != null)
+        if (date != null) {
             sql += "WHERE DATE(m.createdDate)=: date";
-        Query q = s.createQuery(sql);
-        if (date != null)
+            Query q = s.createQuery(sql);
             q.setParameter("date", date);
-        return q.getResultList();
+            return q.getResultList();
+        } else if (patient > 0) {
+            User p = this.userRepo.getUserById(patient);
+            sql += "WHERE m.patientId.id=: id";
+            Query q = s.createQuery(sql);
+            q.setParameter("id", patient);
+            return q.getResultList();
+        } else {
+            Query q = s.createQuery(sql);
+            return q.getResultList();
+        }
+
     }
-    
+
 }

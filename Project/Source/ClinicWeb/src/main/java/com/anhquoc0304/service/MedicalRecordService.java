@@ -16,5 +16,5 @@ import java.util.Map;
 public interface MedicalRecordService {
     boolean addMedicalRecord(MedicalRecord m);
     MedicalRecord getMedicalRecordById(int id);
-    List<MedicalRecord> getMedicals(Date date);
+    List<MedicalRecord> getMedicals(Date date, int patient);
 }

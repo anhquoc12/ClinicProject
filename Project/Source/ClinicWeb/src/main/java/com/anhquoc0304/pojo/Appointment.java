@@ -20,8 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -70,13 +68,13 @@ public class Appointment implements Serializable {
     @Size(max = 9)
     @Column(name = "appointment_status")
     private String appointmentStatus;
-    @JoinColumn(name = "specialization_id", referencedColumnName = "id")
+    @JoinColumn(name = "specialization", referencedColumnName = "id")
     @ManyToOne
     private Specialization specializationId;
-    @JoinColumn(name = "nurse_id", referencedColumnName = "id")
+    @JoinColumn(name = "nurse", referencedColumnName = "id")
     @ManyToOne
     private User nurseId;
-    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    @JoinColumn(name = "patient", referencedColumnName = "id")
     @ManyToOne
     private User patientId;
 

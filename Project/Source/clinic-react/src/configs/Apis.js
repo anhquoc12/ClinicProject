@@ -7,7 +7,8 @@ export const SERVER = 'http://localhost:8080'
 export const endpoints = {
     'login': `${SERVER_CONTEXT}/api/login/`,
     'user': {
-        'user-id': (userId) => `${SERVER_CONTEXT}/api/user/${userId}/`
+        'user-id': (userId) => `${SERVER_CONTEXT}/api/user/${userId}/`,
+        'list-patient': `${SERVER_CONTEXT}/api/user/patients/`
     },
     'authentication': {
         'current-user': `${SERVER_CONTEXT}/api/current-user/`,
@@ -30,7 +31,10 @@ export const endpoints = {
     },
     'medical': {
         'add': `${SERVER_CONTEXT}/api/doctor/medical/add/`,
-        'add-presrciption': (id) => `${SERVER_CONTEXT}/api/doctor/medical/prescription/${id}/`
+        'add-presrciption': (id) => `${SERVER_CONTEXT}/api/doctor/medical/prescription/${id}/`,
+        'history': `${SERVER_CONTEXT}/api/doctor/history/`,
+        'detail': (id) => `${SERVER_CONTEXT}/api/doctor/history/${id}/`,
+        'prescription': (id) => `${SERVER_CONTEXT}/api/doctor/prescription/${id}/`
     },
     'medicine': {
         'list': `${SERVER_CONTEXT}/api/employee/medicine/list/`

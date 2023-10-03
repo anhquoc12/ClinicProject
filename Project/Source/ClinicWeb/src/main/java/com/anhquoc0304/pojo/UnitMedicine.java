@@ -4,7 +4,7 @@
  */
 package com.anhquoc0304.pojo;
 
-import com.anhquoc0304.validations.UnitMedicineName;
+//import com.anhquoc0304.validations.UnitMedicineName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
@@ -46,7 +46,7 @@ public class UnitMedicine implements Serializable {
     @Size(max = 255)
     @Column(name = "name")
     @NotEmpty(message = "{unitMedicine.name.notEmptyMsg}")
-    @UnitMedicineName(message = "{unitMedicine.name.uniqueMsg}")
+//    @UnitMedicineName(message = "{unitMedicine.name.uniqueMsg}")
     private String name;
     @OneToMany(mappedBy = "unitMedicineId")
     @JsonIgnore

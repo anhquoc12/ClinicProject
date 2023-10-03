@@ -31,11 +31,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.xml.ws.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -132,5 +134,33 @@ public class ApiMedicalRecord {
         Message message = new Message();
         message.setMessage("Có lỗi xảy ra.");
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    @GetMapping(path = "/api/doctor/history/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<MedicalRecord>> getHistories(@RequestParam(value = "date",
+            required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date date, @RequestParam(value = "patient", required = false) 
+                    String patient) {
+        int patientId = 0;
+        if (patient != null) patientId = Integer.parseInt(patient);
+        if(date != null)
+            return new ResponseEntity<>(this.medicalService.getMedicals(date, patientId),
+            HttpStatus.OK);
+        else
+            return new ResponseEntity<>(this.medicalService.getMedicals(null, patientId),
+            HttpStatus.OK);
+    }
+    
+    @GetMapping("/api/doctor/history/{id}/")
+    public ResponseEntity<MedicalRecord> getDetailMedical(@PathVariable(value = "id")
+    int id) {
+        return new ResponseEntity<>(this.medicalService.getMedicalRecordById(id),
+        HttpStatus.OK);
+    }
+    
+    @GetMapping("/api/doctor/prescription/{id}/")
+    public ResponseEntity<List<Prescription>> getPrescriptionByMedical(@PathVariable(value = "id")
+    int id) {
+        return new ResponseEntity<>(this.prescriptionService.getPrescriptionByMedicalRecord(id),
+        HttpStatus.OK);
     }
 }
