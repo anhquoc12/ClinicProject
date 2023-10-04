@@ -21,6 +21,7 @@
     <class>com.anhquoc0304.pojo.ScheduleNurse</class>
     <class>com.anhquoc0304.pojo.Role</class>
     <class>com.anhquoc0304.pojo.Shift</class>
+    <class>testpackage.Shift</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinicdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

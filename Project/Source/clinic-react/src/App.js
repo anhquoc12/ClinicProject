@@ -25,6 +25,9 @@ import Medical from './component/doctor/Medical';
 import Prescription from './component/doctor/Presciption';
 import History from './component/doctor/History';
 import DetailMedical from './component/doctor/DetailMedical';
+import Medicine from './component/administrator/Medicine';
+import Categories from './component/administrator/Categories';
+import UnitMedicine from './component/administrator/UnitMedicine';
 
 export const MyUserContext = createContext()
 
@@ -50,6 +53,9 @@ function App() {
         <Route path='/doctor/medical/prescription/:medicalId/:patientId' element={<PermissionRoute path='/doctor/medical/prescription/:medicalId/:patientId' component={<Prescription />} />} />
         <Route path='/doctor/medical/history' element={<PermissionRoute path='/doctor/medical/history' component={<History />} />} />
         <Route path='/doctor/medical/history/:medicalId' element={<PermissionRoute path='/doctor/medical/history/:medicalId' component={<DetailMedical />} />} />
+        <Route path='/admin/medicine' element={<PermissionRoute path='/admin/medicine' component={<Medicine />} />} />
+        <Route path='/admin/medicine/categories' element={<PermissionRoute path='/admin/medicine/categories' component={<Categories />} />} />
+        <Route path='/admin/medicine/unit' element={<PermissionRoute path='/admin/medicine/unit' component={<UnitMedicine />} />} />
         <Route path='/forbidden' element={<Forbidden />} />
       </Routes>
       {/* </Container> */}

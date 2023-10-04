@@ -4,7 +4,6 @@
  */
 package com.anhquoc0304.pojo;
 
-//import com.anhquoc0304.validations.UnitMedicineName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;

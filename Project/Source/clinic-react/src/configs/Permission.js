@@ -14,5 +14,8 @@ export const Permission = {
     '/doctor/medical': roles([USER_ROLE.DOCTOR]),
     '/doctor/medical/prescription/:medicalId/:patientId': roles([USER_ROLE.DOCTOR]),
     '/doctor/medical/history': roles([USER_ROLE.DOCTOR]),
-    '/doctor/medical/history/:medicalId': roles([USER_ROLE.DOCTOR])
+    '/doctor/medical/history/:medicalId': roles([USER_ROLE.DOCTOR]),
+    '/admin/medicine': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
+    '/admin/medicine/categories': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
+    '/admin/medicine/unit': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER])
 }

@@ -60,10 +60,12 @@ com\anhquoc0304\pojo\Category.class
 com\anhquoc0304\configs\DispatcherServletInit.class
 com\anhquoc0304\filters\RestAuthenticationEntryPoint.class
 com\anhquoc0304\configs\TilesConfig.class
+com\anhquoc0304\service\impl\UnitMedicineServiceImpl.class
 com\anhquoc0304\clinicweb\resources\JavaEE8Resource.class
 com\anhquoc0304\repository\impl\StatRepositoryImpl.class
 com\anhquoc0304\service\impl\DoctorServiceImpl.class
 com\anhquoc0304\configs\HibernateConfigs.class
+com\anhquoc0304\repository\UnitMedicineRepository.class
 com\anhquoc0304\controllers\IndexController.class
 com\anhquoc0304\repository\CategoryRepository.class
 com\anhquoc0304\configs\SecurityWebApplicationInitializer.class
@@ -71,9 +73,11 @@ com\anhquoc0304\pojo\Schedule.class
 com\anhquoc0304\repository\AppointmentRepository.class
 com\anhquoc0304\configs\WebAppContextConfig.class
 com\anhquoc0304\filters\JWTAuthenticationTokenFilter.class
+com\anhquoc0304\repository\impl\UnitMedicineRepositoryImpl.class
 com\anhquoc0304\restapis\ApiSpecializationController.class
 com\anhquoc0304\validations\CategoryName.class
 com\anhquoc0304\pojo\Specialization.class
+com\anhquoc0304\service\UnitMedicineService.class
 com\anhquoc0304\pojo\MedicalRecord.class
 com\anhquoc0304\validations\RoomName.class
 com\anhquoc0304\pojo\UnitMedicine.class

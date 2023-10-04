@@ -1,0 +1,14 @@
+[{
+        "shiftName": "ca 1",
+        "shiftStart": "07:00:00",
+        "shiftEnd": "11:00:00"
+    }, {
+        "shiftName": "ca 2",
+        "shiftStart": "13:00:00",
+        "shiftEnd": "17:00:00"
+    }, {
+        "shiftName": "ca 3",
+        "shiftStart": "18:00:00",
+        "shiftEnd": "22:00:00"
+    }
+]

@@ -30,39 +30,91 @@ const Header = () => {
           <Link to="/" className="nav-item nav-link">
             Trang Chủ
           </Link>
-          {currentUser !== null?<>
-          {currentUser.userRole === USER_ROLE.PATIENT && (
+          {currentUser !== null ? (
             <>
-              <Link to="/" className="nav-item nav-link">
-                Đăng ký lịch khám
-              </Link>
-              <Link to="/" className="nav-item nav-link">
-                Lịch Sử Khám
-              </Link>
+              {currentUser.userRole === USER_ROLE.PATIENT && (
+                <>
+                  <Link to="/" className="nav-item nav-link">
+                    Đăng ký lịch khám
+                  </Link>
+                  <Link to="/" className="nav-item nav-link">
+                    Lịch Sử Khám
+                  </Link>
+                </>
+              )}
+              {currentUser.userRole === USER_ROLE.NURSE && (
+                <>
+                  <NavDropdown title="Lịch hẹn" id="navbarScrollingDropdown">
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/nurse/confirmed" className="nav-item nav-link">
+                        Lịch hẹn đang chờ xác nhận
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/nurse/present" className="nav-item nav-link">
+                        Xác nhận bệnh nhân đã đến
+                      </Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Link to="/" className="nav-item nav-link">
+                    Thanh toán
+                  </Link>
+                  <Link to="/" className="nav-item nav-link">
+                    Lịch Trực
+                  </Link>
+                </>
+              )}
+              {currentUser.userRole === USER_ROLE.DOCTOR && (
+                <>
+                  <NavDropdown title="Khám bệnh" id="navbarScrollingDropdown">
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/nurse/confirmed" className="nav-item nav-link">
+                        Khám bệnh
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/nurse/present" className="nav-item nav-link">
+                        Lịch sử khám
+                      </Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Link to="/" className="nav-item nav-link">
+                    Lịch Trực
+                  </Link>
+                </>
+              )}
+              {(currentUser.userRole === USER_ROLE.ADMIN ||
+                currentUser.userRole === USER_ROLE.OWNER) && (
+                <>
+                  <NavDropdown
+                    title="Danh mục thuốc"
+                    id="navbarScrollingDropdown"
+                  >
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/nurse/confirmed" className="nav-item nav-link">
+                        thuốc
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/admin/medicine/categories" className="nav-item nav-link">
+                        Loại thuốc
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/admin/medicine/unit" className="nav-item nav-link">
+                        Đơn vị thuốc
+                      </Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <Link to="/" className="nav-item nav-link">
+                    Lịch Trực
+                  </Link>
+                </>
+              )}
             </>
+          ) : (
+            <span></span>
           )}
-          {currentUser.userRole === USER_ROLE.NURSE && (
-            <>
-              <NavDropdown title="Lịch hẹn" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action4">
-                  <Link to="/nurse/confirmed" className="nav-item nav-link">
-                  Lịch hẹn đang chờ xác nhận
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  <Link to="/nurse/present" className="nav-item nav-link">
-                  Xác nhận bệnh nhân đã đến
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Link to="/" className="nav-item nav-link">
-                Thanh toán
-              </Link>
-              <Link to="/" className="nav-item nav-link">
-                Lịch Trực
-              </Link>
-            </>
-          )}</>:<span></span>}
         </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Nav>
