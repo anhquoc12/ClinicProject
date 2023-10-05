@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, Modal, Row, Table } from "react-bootstrap";
 import { authUser, endpoints } from "../../configs/Apis";
 import { formatCurrency } from "../../utils/utils";
 import Loading from "../../layout/Loading";
@@ -131,28 +131,28 @@ const Medicine = () => {
           </Form.Group>
         </Form>
         <div>
-          <table className="table table-borderless table-responsive overflow-auto">
+          <table>
             <thead>
               <tr>
-                <th className="text-muted text-center" style={{ width: "20%" }}>
+                <th style={{ width: "20%" }}>
                   Tên Thuốc
                 </th>
-                <th className="text-muted text-center" style={{ width: "5%" }}>
+                <th style={{ width: "5%" }}>
                   Đơn giá
                 </th>
-                <th className="text-muted text-center" style={{ width: "5%" }}>
+                <th style={{ width: "10%" }}>
                   Số lượng
                 </th>
-                <th className="text-muted text-center" style={{ width: "20%" }}>
+                <th style={{ width: "20%" }}>
                   loại thuốc
                 </th>
-                <th className="text-muted text-center" style={{ width: "10%" }}>
+                <th style={{ width: "10%" }}>
                   Đơn vị dùng
                 </th>
                 <th
-                  className="text-muted text-center"
+                 
                   colSpan="2"
-                  style={{ width: "40%" }}
+                  style={{ width: "35%" }}
                 >
                   Actions
                 </th>
@@ -161,7 +161,7 @@ const Medicine = () => {
             <tbody>
               {medicines.map((m) => {
                 return (
-                  <tr>
+                  <tr className=".content-table">
                     <td>{m.name}</td>
                     <td>{formatCurrency(m.unitPrice)}</td>
                     <td>{m.unitInStock}</td>

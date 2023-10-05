@@ -8,7 +8,11 @@ export const endpoints = {
     'login': `${SERVER_CONTEXT}/api/login/`,
     'user': {
         'user-id': (userId) => `${SERVER_CONTEXT}/api/user/${userId}/`,
-        'list-patient': `${SERVER_CONTEXT}/api/user/patients/`
+        'list-patient': `${SERVER_CONTEXT}/api/user/patients/`,
+        'list-by-role': (role) => `${SERVER_CONTEXT}/api/user/list/${role}/`,
+        'add-doctor': `${SERVER_CONTEXT}/api/admin/user/doctor/add/`,
+        'delete': (id) => `${SERVER_CONTEXT}/api/admin/user/delete/${id}/`,
+        'add-nurse': `${SERVER_CONTEXT}/api/admin/user/nurse/add/`
     },
     'authentication': {
         'current-user': `${SERVER_CONTEXT}/api/current-user/`,
@@ -17,7 +21,9 @@ export const endpoints = {
     'update-user': `${SERVER_CONTEXT}/api/update/user/`,
     'change-password': `${SERVER_CONTEXT}/api/update/user/password/`,
     'specialization': {
-        'lists': `${SERVER_CONTEXT}/api/specialization/lists/`
+        'lists': `${SERVER_CONTEXT}/api/specialization/lists/`,
+        'add': `${SERVER_CONTEXT}/api/admin/special/add/`,
+        'delete': (id) => `${SERVER_CONTEXT}/api/admin/special/delete/${id}/`
     },
     'appointment': {
         'add': `${SERVER_CONTEXT}/api/appointment/register/`,
@@ -51,6 +57,11 @@ export const endpoints = {
         'lists': `${SERVER_CONTEXT}/api/admin/medicine/unit-medicines/`,
         'delete': (id) => `${SERVER_CONTEXT}/api/admin/medicine/unit/delete/${id}/`,
         'add': `${SERVER_CONTEXT}/api/admin/medicine/unit/add/`
+    },
+    'room': {
+        'add': `${SERVER_CONTEXT}/api/admin/room/add/`,
+        'list': `${SERVER_CONTEXT}/api/admin/rooms/`,
+        'delete': (id) => `${SERVER_CONTEXT}/api/admin/room/delete/${id}/`
     }
 }
 

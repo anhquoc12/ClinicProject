@@ -87,6 +87,7 @@ com\anhquoc0304\repository\impl\SpecializationRepositoryImpl.class
 com\anhquoc0304\repository\impl\UserRepositoryImpl.class
 com\anhquoc0304\validations\impl\UsernameValidation.class
 com\anhquoc0304\repository\StatRepository.class
+com\anhquoc0304\restapis\ApiScheduleControllers.class
 com\anhquoc0304\repository\impl\CategoryRepositoryImpl.class
 com\anhquoc0304\configs\JWTSecurityConfig.class
 com\anhquoc0304\pojo\Room.class

@@ -81,7 +81,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<Object[]> getUserByUserRole(String userRole) {
         Session s = this.factory.getObject().getCurrentSession();
         Query q;
-        if (userRole == User.DOCTOR) {
+        if (userRole.equals(User.DOCTOR)) {
             q = s.createQuery("SELECT u.id, u.avatar, u.fullName, u.address, u.email, u.phone, s.name, s.id FROM Doctor d LEFT JOIN d.userId u LEFT JOIN d.specializationId s WHERE u.userRole = :role");
         } else {
             q = s.createQuery("SELECT u.id, u.avatar, u.fullName, u.address, u.email, u.phone FROM User u WHERE u.userRole = :role");
@@ -140,7 +140,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<Object[]> getUserByUserRoleAndName(String userRole, String name) {
         Session s = this.factory.getObject().getCurrentSession();
         String sql;
-        if (userRole == User.DOCTOR) {
+        if (userRole.equals(User.DOCTOR)) {
             sql ="SELECT u.id, u.avatar, u.fullName, u.address, u.email, u.phone, s.name, s.id FROM Doctor d LEFT JOIN d.userId u LEFT JOIN d.specializationId s WHERE u.userRole = :role AND u.fullName LIKE :key";
         } else {
             sql = "SELECT u.id, u.avatar, u.fullName, u.address, u.email, u.phone FROM User u WHERE u.userRole = :role AND u.fullName LIKE :key";

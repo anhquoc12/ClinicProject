@@ -86,12 +86,32 @@ const Header = () => {
               {(currentUser.userRole === USER_ROLE.ADMIN ||
                 currentUser.userRole === USER_ROLE.OWNER) && (
                 <>
+                <NavDropdown
+                    title="Danh sách người dùng"
+                    id="navbarScrollingDropdown"
+                  >
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/admin/user/doctors" className="nav-item nav-link">
+                        Bác sỹ
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/admin/user/nurses" className="nav-item nav-link">
+                        Y Tá
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      <Link to="/admin/user/patients" className="nav-item nav-link">
+                        Bệnh Nhân
+                      </Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
                   <NavDropdown
                     title="Danh mục thuốc"
                     id="navbarScrollingDropdown"
                   >
                     <NavDropdown.Item href="#action4">
-                      <Link to="/nurse/confirmed" className="nav-item nav-link">
+                      <Link to="/admin/medicine" className="nav-item nav-link">
                         thuốc
                       </Link>
                     </NavDropdown.Item>

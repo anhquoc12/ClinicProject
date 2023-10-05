@@ -6,7 +6,10 @@ package com.anhquoc0304.restapis;
 
 import com.anhquoc0304.components.JWTService;
 import com.anhquoc0304.dto.Message;
+import com.anhquoc0304.pojo.Doctor;
 import com.anhquoc0304.pojo.User;
+import com.anhquoc0304.service.DoctorService;
+import com.anhquoc0304.service.SpecializationService;
 import com.anhquoc0304.service.UserService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -21,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import javax.validation.Valid;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +34,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +60,10 @@ public class ApiUserController {
     private Cloudinary cloudinary;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private SpecializationService specialService;
+    @Autowired
+    private DoctorService doctorService;
 
     @PostMapping("/api/login/")
     public ResponseEntity<String> login(@RequestBody User user) {
@@ -139,7 +148,7 @@ public class ApiUserController {
         message.setData(null);
         return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
     }
-    
+
     @PostMapping("/api/add/user/patient/")
     public ResponseEntity<Message> addPatient(@RequestParam Map<String, String> patient,
             @RequestPart MultipartFile file, @Valid User user,
@@ -168,7 +177,7 @@ public class ApiUserController {
                 Map m = this.cloudinary.uploader().upload(file.getBytes(),
                         ObjectUtils.asMap("resource_type", "auto"));
                 user.setAvatar((String) m.get("secure_url"));
-                if(this.userService.addOrUpdateUser(user)) {
+                if (this.userService.addOrUpdateUser(user)) {
                     message.setMessage("Đăng Ký Thành Công");
                     message.setData(user);
                 }
@@ -182,16 +191,136 @@ public class ApiUserController {
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
-    
+
     @GetMapping("/api/user/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable(value = "id") int id) {
         return new ResponseEntity<>(this.userService.getUserById(id),
-        HttpStatus.OK);
+                HttpStatus.OK);
     }
-    
+
     @GetMapping(path = "/api/user/patients/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Object[]>> getPatients() {
         return new ResponseEntity<>(this.userService.getUserByUserRole(User.PATIENT),
-        HttpStatus.OK);
+                HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/api/user/list/{roles}/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Object[]>> getUsersByRoles(@PathVariable(value = "roles") String role, @RequestParam(value = "name", required = false) String name) {
+        if (name != null) {
+            return new ResponseEntity<>(this.userService.getUserByUserRoleAndName(role, name),
+                    HttpStatus.OK);
+        }
+        return new ResponseEntity<>(this.userService.getUserByUserRole(role),
+                HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/api/admin/user/delete/{id}/")
+    public ResponseEntity<Message> deleletUser(@PathVariable(value = "id") int id) {
+        Message m = new Message();
+        User user = this.userService.getUserById(id);
+        if (this.userService.deleteUser(user)) {
+            m.setMessage("Xoá bỏ thành công");
+            m.setData(user);
+            return new ResponseEntity<>(m, HttpStatus.OK);
+        }
+        m.setMessage("Xoá bỏ không thành công");
+        return new ResponseEntity<>(m, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PostMapping(path = "/api/admin/user/doctor/add/")
+    public ResponseEntity<Message> addDoctor(@RequestParam Map<String, String> doctor,
+            @RequestPart(required = false) MultipartFile file) {
+        User user = new User();
+//        String fullName = doctor.get("fullName");
+//        String normalizedFullName = StringUtils.stripAccents(fullName.toLowerCase());
+        
+
+        if (doctor.get("id") != null) {
+            try {
+                user = this.userService.getUserById(Integer.parseInt(doctor.get("id")));
+
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            String fullName = doctor.get("fullName");
+            String normalizedFullName = StringUtils.stripAccents(fullName.toLowerCase());
+            String[] parts = normalizedFullName.split(" ");
+            user.setUsername(parts[0] + parts[parts.length - 1] + (int) (Math.random() * 1000));
+            user.setPassword("12345678");
+        }
+        user.setFullName(doctor.get("fullName"));
+        user.setAddress(doctor.get("address"));
+        user.setPhone(doctor.get("phone"));
+        user.setEmail(doctor.get("email"));
+        user.setUserRole(User.DOCTOR);
+        Message message = new Message();
+        if (file != null) {
+
+            try {
+                Map m = this.cloudinary.uploader().upload(file.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar((String) m.get("secure_url"));
+            } catch (IOException ex) {
+                message.setMessage("Không thể upload ảnh đại diện");
+                message.setData(null);
+            }
+
+        }
+        if (this.userService.addOrUpdateUser(user)) {
+            Doctor d = this.doctorService.getDoctorById(this.userService
+                    .getCurrentUser(user.getUsername()).getId());
+            d.setUserId(user);
+            d.setSpecializationId(this.specialService.getSpecializationById(Integer.parseInt(doctor.get("specialId"))));
+            this.doctorService.addOrUpdateDoctor(d);
+            message.setMessage("Thêm thành công");
+            message.setData(d);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    @PostMapping(path = "/api/admin/user/nurse/add/")
+    public ResponseEntity<Message> addNUrse(@RequestParam Map<String, String> nurse,
+            @RequestPart(required = false) MultipartFile file) {
+        User user = new User();
+        if (nurse.get("id") != null) {
+            try {
+                user = this.userService.getUserById(Integer.parseInt(nurse.get("id")));
+
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            String fullName = nurse.get("fullName");
+            String normalizedFullName = StringUtils.stripAccents(fullName.toLowerCase());
+            String[] parts = normalizedFullName.split(" ");
+            user.setUsername(parts[0] + parts[parts.length - 1] + (int) (Math.random() * 1000));
+            user.setPassword("12345678");
+        }
+        user.setFullName(nurse.get("fullName"));
+        user.setAddress(nurse.get("address"));
+        user.setPhone(nurse.get("phone"));
+        user.setEmail(nurse.get("email"));
+        user.setUserRole(User.NURSE);
+        Message message = new Message();
+        if (file != null) {
+
+            try {
+                Map m = this.cloudinary.uploader().upload(file.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar((String) m.get("secure_url"));
+            } catch (IOException ex) {
+                message.setMessage("Không thể upload ảnh đại diện");
+                message.setData(null);
+            }
+
+        }
+        if (this.userService.addOrUpdateUser(user)) {
+            message.setMessage("Thêm thành công");
+            message.setData(user);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

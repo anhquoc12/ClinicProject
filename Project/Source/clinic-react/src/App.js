@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './static/css/table.css'
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Header from './layout/Header';
 import Home from './component/Home';
@@ -28,6 +29,10 @@ import DetailMedical from './component/doctor/DetailMedical';
 import Medicine from './component/administrator/Medicine';
 import Categories from './component/administrator/Categories';
 import UnitMedicine from './component/administrator/UnitMedicine';
+import Doctors from './component/administrator/Doctors';
+import Nurses from './component/administrator/Nurses';
+import Specialization from './component/administrator/Specialization';
+import Room from './component/administrator/Room';
 
 export const MyUserContext = createContext()
 
@@ -57,6 +62,10 @@ function App() {
         <Route path='/admin/medicine/categories' element={<PermissionRoute path='/admin/medicine/categories' component={<Categories />} />} />
         <Route path='/admin/medicine/unit' element={<PermissionRoute path='/admin/medicine/unit' component={<UnitMedicine />} />} />
         <Route path='/forbidden' element={<Forbidden />} />
+        <Route path='/admin/user/doctors' element={<PermissionRoute path='/admin/user/doctors' component={<Doctors />} />} />
+        <Route path='/admin/user/nurses' element={<PermissionRoute path='/admin/user/nurses' component={<Nurses />} />} />
+        <Route path='/admin/specializations' element={<PermissionRoute path='/admin/specializations' component={<Specialization />} />} />
+        <Route path='/admin/room' element={<PermissionRoute path='/admin/room' component={<Room />} />} />
       </Routes>
       {/* </Container> */}
       <Footer />
