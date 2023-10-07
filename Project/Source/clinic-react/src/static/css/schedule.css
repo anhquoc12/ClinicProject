@@ -1,0 +1,32 @@
+.form--schedule{
+    width: 50%;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    /* padding: 20px; */
+}
+
+.form--schedule-header {
+    font-family: "Oxygen";
+    text-transform: uppercase;
+    font-size: 3em;
+    color: #FFFFFF;
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #15A4FA;
+    padding: 15px;
+}
+
+.form--schedule-form {
+    margin-top: 100px;
+    margin-bottom: 24px;
+   padding-left: 50px;
+   padding-right: 50px;
+}
+
+.button-submit {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: 80%;
+}

@@ -4,6 +4,7 @@ com\anhquoc0304\service\UserService.class
 com\anhquoc0304\pojo\Appointment.class
 com\anhquoc0304\pojo\Doctor.class
 com\anhquoc0304\validations\impl\CategoryNameValidation.class
+com\anhquoc0304\pojo\Shift.class
 com\anhquoc0304\handlers\LoginHandler.class
 com\anhquoc0304\service\RoomService.class
 com\anhquoc0304\repository\UserRepository.class
@@ -48,12 +49,15 @@ com\anhquoc0304\service\impl\ScheduleServiceImpl.class
 com\anhquoc0304\service\impl\EmailServiceImpl.class
 com\anhquoc0304\repository\ScheduleRepository.class
 com\anhquoc0304\repository\impl\ScheduleReopositoryImpl.class
+com\anhquoc0304\repository\impl\ShiftRepositoryImpl.class
 com\anhquoc0304\pojo\Medicine.class
 com\anhquoc0304\repository\impl\PrescriptionRepositoryImpl.class
 com\anhquoc0304\service\StatService.class
+com\anhquoc0304\repository\ShiftRepository.class
 com\anhquoc0304\repository\PrescriptionRepository.class
 com\anhquoc0304\configs\SpringSecurityConfig.class
 com\anhquoc0304\clinicweb\JAXRSConfiguration.class
+com\anhquoc0304\service\ShiftService.class
 com\anhquoc0304\validations\MedicineName.class
 com\anhquoc0304\restapis\ApiAppointmentController.class
 com\anhquoc0304\pojo\Category.class
@@ -64,6 +68,7 @@ com\anhquoc0304\service\impl\UnitMedicineServiceImpl.class
 com\anhquoc0304\clinicweb\resources\JavaEE8Resource.class
 com\anhquoc0304\repository\impl\StatRepositoryImpl.class
 com\anhquoc0304\service\impl\DoctorServiceImpl.class
+com\anhquoc0304\service\impl\ShiftServiceImpl.class
 com\anhquoc0304\configs\HibernateConfigs.class
 com\anhquoc0304\repository\UnitMedicineRepository.class
 com\anhquoc0304\controllers\IndexController.class

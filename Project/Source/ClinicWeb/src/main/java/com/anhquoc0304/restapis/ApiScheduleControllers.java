@@ -6,8 +6,10 @@ package com.anhquoc0304.restapis;
 
 import com.anhquoc0304.dto.Message;
 import com.anhquoc0304.pojo.Room;
+import com.anhquoc0304.pojo.Shift;
 import com.anhquoc0304.service.RoomService;
 import com.anhquoc0304.service.ScheduleService;
+import com.anhquoc0304.service.ShiftService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,7 @@ public class ApiScheduleControllers {
     private RoomService roomService;
     @Autowired
     private ScheduleService scheduleService;
+    @Autowired ShiftService shiftService;
     
     @GetMapping("/api/admin/rooms/")
     public ResponseEntity<List<Room>> getRooms() {
@@ -61,6 +64,11 @@ public class ApiScheduleControllers {
         }
         message.setMessage("Có lỗi xảy ra. Vui lòng thử lại.");
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    @GetMapping("/api/admin/shift/")
+    public ResponseEntity<List<Shift>> getShifts(){
+        return new ResponseEntity<>(this.shiftService.getShifts(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
     
 }

@@ -31,10 +31,10 @@ public class ScheduleServiceImpl implements ScheduleService{
         return this.scheduleRepo.addSchedule(schedule);
     }
 
-    @Override
-    public List<Object[]> getScheduleByDate(Date d){
-        return this.scheduleRepo.getScheduleByDate(d);
-    }
+//    @Override
+//    public List<Object[]> getScheduleByDate(Date d){
+//        return this.scheduleRepo.getScheduleByDate(d);
+//    }
 
     @Override
     public int countScheduleByDate(Date d) {

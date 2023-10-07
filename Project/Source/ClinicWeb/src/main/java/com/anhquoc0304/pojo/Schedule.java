@@ -37,8 +37,9 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "Schedule.findAll", query = "SELECT s FROM Schedule s"),
     @NamedQuery(name = "Schedule.findById", query = "SELECT s FROM Schedule s WHERE s.id = :id"),
     @NamedQuery(name = "Schedule.findByScheduleDate", query = "SELECT s FROM Schedule s WHERE s.scheduleDate = :scheduleDate"),
-    @NamedQuery(name = "Schedule.findByShiftStart", query = "SELECT s FROM Schedule s WHERE s.shiftStart = :shiftStart"),
-    @NamedQuery(name = "Schedule.findByShiftEnd", query = "SELECT s FROM Schedule s WHERE s.shiftEnd = :shiftEnd")})
+//    @NamedQuery(name = "Schedule.findByShiftStart", query = "SELECT s FROM Schedule s WHERE s.shiftStart = :shiftStart"),
+//    @NamedQuery(name = "Schedule.findByShiftEnd", query = "SELECT s FROM Schedule s WHERE s.shiftEnd = :shiftEnd")})
+})
 //@ScheduleTime(message = "{schedule.shiftStart.lessThanShiftEnd}")
 public class Schedule implements Serializable {
 
@@ -54,22 +55,25 @@ public class Schedule implements Serializable {
     @Future(message = "{schedule.scheduleDate.FutureMsg}")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date scheduleDate;
-    @Column(name = "shift_start")
-    @Temporal(TemporalType.TIME)
-    @NotNull(message = "{schedule.shiftStart.notNullMsg}")
-    @DateTimeFormat(pattern = "HH:mm")
-    private Date shiftStart;
-    @Column(name = "shift_end")
-    @Temporal(TemporalType.TIME)
-    @NotNull(message = "{schedule.shiftEnd.notNullMsg}")
-    @DateTimeFormat(pattern = "HH:mm")
-    private Date shiftEnd;
+//    @Column(name = "shift_start")
+//    @Temporal(TemporalType.TIME)
+//    @NotNull(message = "{schedule.shiftStart.notNullMsg}")
+//    @DateTimeFormat(pattern = "HH:mm")
+//    private Date shiftStart;
+//    @Column(name = "shift_end")
+//    @Temporal(TemporalType.TIME)
+//    @NotNull(message = "{schedule.shiftEnd.notNullMsg}")
+//    @DateTimeFormat(pattern = "HH:mm")
+//    private Date shiftEnd;
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     @ManyToOne
     private Room roomId;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne
     private User userId;
+    @JoinColumn(name = "shift_id", referencedColumnName = "id")
+    @ManyToOne
+    private Shift shiftId;
 
     public Schedule() {
     }
@@ -94,21 +98,21 @@ public class Schedule implements Serializable {
         this.scheduleDate = scheduleDate;
     }
 
-    public Date getShiftStart() {
-        return shiftStart;
-    }
-
-    public void setShiftStart(Date shiftStart) {
-        this.shiftStart = shiftStart;
-    }
-
-    public Date getShiftEnd() {
-        return shiftEnd;
-    }
-
-    public void setShiftEnd(Date shiftEnd) {
-        this.shiftEnd = shiftEnd;
-    }
+//    public Date getShiftStart() {
+//        return shiftStart;
+//    }
+//
+//    public void setShiftStart(Date shiftStart) {
+//        this.shiftStart = shiftStart;
+//    }
+//
+//    public Date getShiftEnd() {
+//        return shiftEnd;
+//    }
+//
+//    public void setShiftEnd(Date shiftEnd) {
+//        this.shiftEnd = shiftEnd;
+//    }
 
     public Room getRoomId() {
         return roomId;
@@ -149,6 +153,20 @@ public class Schedule implements Serializable {
     @Override
     public String toString() {
         return "com.anhquoc0304.pojo.Schedule[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the shiftId
+     */
+    public Shift getShiftId() {
+        return shiftId;
+    }
+
+    /**
+     * @param shiftId the shiftId to set
+     */
+    public void setShiftId(Shift shiftId) {
+        this.shiftId = shiftId;
     }
 
 }

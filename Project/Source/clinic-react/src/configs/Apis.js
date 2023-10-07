@@ -62,6 +62,9 @@ export const endpoints = {
         'add': `${SERVER_CONTEXT}/api/admin/room/add/`,
         'list': `${SERVER_CONTEXT}/api/admin/rooms/`,
         'delete': (id) => `${SERVER_CONTEXT}/api/admin/room/delete/${id}/`
+    }, 
+    'shift': {
+        'list': `${SERVER_CONTEXT}/api/admin/shift/`
     }
 }
 

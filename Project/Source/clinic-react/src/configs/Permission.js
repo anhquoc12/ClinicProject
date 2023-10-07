@@ -21,5 +21,6 @@ export const Permission = {
     '/admin/user/doctors': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
     '/admin/user/nurses': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
     '/admin/specializations': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
-    '/admin/room': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER])
+    '/admin/room': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER]),
+    '/admin/schedule/add': roles([USER_ROLE.ADMIN, USER_ROLE.OWNER])
 }

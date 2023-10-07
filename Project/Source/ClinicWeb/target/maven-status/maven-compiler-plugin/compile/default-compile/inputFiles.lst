@@ -1,4 +1,5 @@
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\ScheduleRepository.java
+C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\ShiftService.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\pojo\Category.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\validations\MedicineName.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\StatRepository.java
@@ -14,6 +15,7 @@ C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\impl\StatServiceImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\DoctorRepository.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\filters\RestAuthenticationEntryPoint.java
+C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\pojo\Shift.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\impl\AppointmentRepositoryImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\PrescriptionService.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\filters\CustomAccessDeniedHandlers.java
@@ -50,10 +52,12 @@ C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\UnitMedicineService.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\dto\Message.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\impl\MedicineRepositoryImpl.java
+C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\impl\ShiftServiceImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\configs\SecurityWebApplicationInitializer.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\AppointmentRepository.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\pojo\MedicalRecord.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\pojo\User.java
+C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\ShiftRepository.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\clinicweb\resources\JavaEE8Resource.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\impl\AppointmentServiceImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\RoomService.java
@@ -70,6 +74,7 @@ C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\impl\UnitMedicineServiceImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\impl\PrescriptionRepositoryImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\pojo\Medicine.java
+C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\impl\ShiftRepositoryImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\impl\EmailServiceImpl.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\service\MedicalRecordService.java
 C:\Users\Admin\OneDrive\My Documents\IT03\ClinicProject\Project\Source\ClinicWeb\src\main\java\com\anhquoc0304\repository\impl\StatRepositoryImpl.java

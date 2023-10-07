@@ -1,0 +1,16 @@
+[{
+    "id": 1,
+    "shiftName": "Ca 1",
+    "shiftStart": "07:00",
+    "shiftEnd": "11:00"
+}, {
+    "id": 2,
+    "shiftName": "Ca 2",
+    "shiftStart": "12:00",
+    "shiftEnd": "17:00"
+}, {
+    "id": 3,
+    "shiftName": "Ca 3",
+    "shiftStart": "18:00",
+    "shiftEnd": "22:00"
+}]

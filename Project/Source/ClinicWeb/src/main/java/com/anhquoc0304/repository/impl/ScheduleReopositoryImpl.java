@@ -43,13 +43,13 @@ public class ScheduleReopositoryImpl implements ScheduleRepository {
         return false;
     }
     
-    @Override
-    public List<Object[]> getScheduleByDate(Date d) {
-        Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("SELECT u.fullName, s.shiftStart, s.shiftEnd, r.name, u.userRole, sp.name FROM Schedule s LEFT JOIN s.userId u LEFT JOIN s.roomId r LEFT JOIN u.doctorSet d LEFT JOIN d.specializationId sp WHERE s.scheduleDate =: date ORDER BY s.shiftStart");
-        q.setParameter("date", d);
-        return q.getResultList();
-    }
+//    @Override
+//    public List<Object[]> getScheduleByDate(Date d) {
+//        Session s = this.factory.getObject().getCurrentSession();
+//        Query q = s.createQuery("SELECT u.fullName, s.shiftStart, s.shiftEnd, r.name, u.userRole, sp.name FROM Schedule s LEFT JOIN s.userId u LEFT JOIN s.roomId r LEFT JOIN u.doctorSet d LEFT JOIN d.specializationId sp WHERE s.scheduleDate =: date ORDER BY s.shiftStart");
+//        q.setParameter("date", d);
+//        return q.getResultList();
+//    }
 
     @Override
     public int countScheduleByDate(Date d) {

@@ -126,7 +126,7 @@ const Header = () => {
                       </Link>
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Link to="/" className="nav-item nav-link">
+                  <Link to="/admin/schedule" className="nav-item nav-link">
                     Lịch Trực
                   </Link>
                 </>

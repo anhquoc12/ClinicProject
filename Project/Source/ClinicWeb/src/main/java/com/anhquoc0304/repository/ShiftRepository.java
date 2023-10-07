@@ -4,17 +4,16 @@
  */
 package com.anhquoc0304.repository;
 
-import com.anhquoc0304.pojo.Schedule;
-import java.time.LocalDate;
-import java.util.Date;
+import com.anhquoc0304.pojo.Shift;
 import java.util.List;
 
 /**
  *
  * @author Admin
  */
-public interface ScheduleRepository {
-    boolean addSchedule(Schedule schedule);
-//    List<Object[]> getScheduleByDate(Date d);
-    int countScheduleByDate(Date d);
+public interface ShiftRepository {
+    List<Shift> getShifts();
+    Shift getShiftById(int id);
+    boolean addShift(Shift s);
+    boolean deleteShift(Shift s);
 }
